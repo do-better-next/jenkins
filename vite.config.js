@@ -12,7 +12,7 @@ export default defineConfig({
     }
   },
   server:{
-    open:true,
+    // open:true,
     proxy:{
       '/api':{
         target:'http://121.5.167.62/',

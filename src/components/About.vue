@@ -22,7 +22,7 @@ const width = ref(186)
 const gaps = ref(10)
 const obg = ref({
     name: '曹西果',
-    gender: "男"
+    gender: "女"
 })
 const author = reactive({
     name: 'John Doe',
@@ -78,7 +78,7 @@ watch(
     <label for="">选择图片性别:</label>
     <input type="text" v-model="imgObj.gender" @keydown.enter="getImg()">
     <button @click="getImg()">发送请求</button><br>
-    <img   :src="imgObj.src.imgurl" v-if="!imgObj.loading">
+    <img :src="imgObj.src.imgurl" v-if="!imgObj.loading">
     <Loading v-if="imgObj.loading" />
     <br>
     <button @click="dis = !dis">显示/隐藏瀑布流</button><br>
@@ -89,10 +89,7 @@ watch(
 </template>
 
 <style  scoped lang="less">
-
-
 input {
-	border: 2px solid v-bind(color);
+    border: 2px solid v-bind(color);
 }
-
 </style>
