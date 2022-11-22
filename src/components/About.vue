@@ -13,7 +13,7 @@ const { x, y } = useMousePosition()
 const imgObj = reactive({
     src: "",
     img: false,
-    gender: "男",
+    gender: "女",
     loading: false
 
 })
@@ -81,7 +81,7 @@ watch(
     <img :src="imgObj.src.imgurl" v-if="!imgObj.loading">
     <Loading v-if="imgObj.loading" />
     <br>
-    <button @click="dis = !dis">显示/隐藏瀑布流</button><br>
+    <button @click="dis = !dis"><h2>显示/隐藏</h2>瀑布流</button><br>
     <Transition :duration="1000" leave-active-class="animate__animated animate__fadeOutUp"
         enter-active-class="animate__animated animate__fadeInUp">
         <WaterFall v-if="dis" :list="list" :width="width" :gaps="gaps" />
