@@ -2,40 +2,48 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { provide, ref } from 'vue';
 
-const randomColor=()=>{
-  const random = Math.floor(Math.random()*1000000 )
-  if(String(random).length===5){
-    return '#'+random+String(Math.floor(Math.random()*10 ))
+const randomColor = () => {
+  const random = Math.floor(Math.random() * 1000000)
+  if (String(random).length === 5) {
+    return '#' + random + String(Math.floor(Math.random() * 10))
   }
-return '#'+random
+  return '#' + random
 }
-const colorv=ref(randomColor())
-provide('color',colorv)
+const colorv = ref(randomColor())
+provide('color', colorv)
 
 </script>
 
 <template>
-  <header>
+  <header class="header">
 
-        <RouterLink to="/welcome" class="home" tag="button">Home</RouterLink>
-        <RouterLink to="/about" class="about" tag="button">about</RouterLink>
+    <RouterLink to="/welcome" class="home" tag="button">Home</RouterLink>
+    <RouterLink to="/about" class="about" tag="button">about</RouterLink>
   </header>
   <RouterView />
 </template>
 
-<style scoped>
+<style >
+.header {
+  display: flex;
+}
+
+.home,
+.about {
+
+  border: 2px solid rgb(11, 10, 10);
+  flex: 1;
+  background-color: rgb(233, 203, 168);
+  text-align: center;
+  height: 30px;
+}
 
 .home {
-	display: block;
-	margin-bottom: 10px;
-	width: 50px;
-	height: 30px;
-	background-color: #f80;
+
 }
+
 .about {
-	display: block;
-	width: 50px;
-	height: 30px;
-	background-color: #f80;
+  border-left: 0px solid transparent;
+
 }
 </style>

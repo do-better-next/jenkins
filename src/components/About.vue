@@ -3,7 +3,6 @@ import { useCounterStore } from '../stores/counter';
 import useMousePosition from '../hooks/useMousePosition';
 import { useAxios } from '../hooks/useAxios';
 import { ref, computed, reactive, watch, inject } from 'vue'
-import List from './List.vue';
 import WaterFall from './WaterFall.vue';
 import Loading from './Loading.vue'
 import gsap from 'gsap'
@@ -20,10 +19,6 @@ const imgObj = reactive({
 const dis = ref(false)
 const width = ref(186)
 const gaps = ref(10)
-const obg = ref({
-    name: '曹西果',
-    gender: "女"
-})
 const author = reactive({
     name: 'John Doe',
     books: [
@@ -51,9 +46,7 @@ function getImg() {
     color.value = 'red'
 
 }
-const getName = (res) => {
-    console.log(res)
-}
+
 
 watch(
     () => num.current,
@@ -67,10 +60,11 @@ watch(
 </script>   
 
 <template>
+    <button @click="dis = !dis">
+        <h2>显示/隐藏</h2>瀑布流
+    </button><br>
     <input type="number" v-model="num.current" step="20">
     <div>{{ num.tweendNumber.toFixed(0) }}</div>
-    <List @on-click="getName" :obj1="obg" />
-    <span>{{ publishedBooksMessage }}</span>
     <div>鼠标x坐标:{{ $filter.format(x) }}</div>
     <div>鼠标y坐标:{{ y }}</div>
     <h1>{{ count.count }}</h1>
@@ -81,8 +75,10 @@ watch(
     <img :src="imgObj.src.imgurl" v-if="!imgObj.loading">
     <Loading v-if="imgObj.loading" />
     <br>
-    <button @click="dis = !dis"><h2>显示/隐藏</h2>瀑布流</button><br>
-    <Transition :duration="1000" leave-active-class="animate__animated animate__fadeOutUp"
+
+    <Transition 
+        :duration="1000" 
+        leave-active-class="animate__animated animate__fadeOutUp"
         enter-active-class="animate__animated animate__fadeInUp">
         <WaterFall v-if="dis" :list="list" :width="width" :gaps="gaps" />
     </Transition>
