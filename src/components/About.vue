@@ -28,7 +28,7 @@ const list = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
 function getImg() {
 if(imgObj.gender){
     imgObj.loading = true
-    const { date, load } = useAxios(`https://api.uomg.com/api/rand.avatar?sort=${imgObj.gender}&format=json`)
+    const { date, load } = useAxios(`http://api.uomg.com/api/rand.avatar?sort=${imgObj.gender}&format=json`)
     imgObj.src = date
     imgObj.loading = load
     imgObj.img = true
