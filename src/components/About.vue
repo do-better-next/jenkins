@@ -12,38 +12,30 @@ const { x, y } = useMousePosition()
 const imgObj = reactive({
     src: "",
     img: false,
-    gender: "女",
+    gender: "",
     loading: false
 
 })
 const dis = ref(false)
 const width = ref(186)
 const gaps = ref(10)
-const author = reactive({
-    name: 'John Doe',
-    books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-    ]
-})
 const num = reactive({
     current: 0,
     tweendNumber: 0
 })
-const publishedBooksMessage = computed(() => {
-    return author.books.length > 0 ? 'Yes' : 'No'
-})
-
 const list = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
 
 function getImg() {
+if(imgObj.gender){
     imgObj.loading = true
     const { date, load } = useAxios(`https://api.uomg.com/api/rand.avatar?sort=${imgObj.gender}&format=json`)
     imgObj.src = date
     imgObj.loading = load
     imgObj.img = true
     color.value = 'red'
+}else{
+    alert('请输入性别:男/女')
+}
 
 }
 
