@@ -78,7 +78,7 @@ watch(
     <label for="">选择图片性别:</label>
     <input type="text" v-model="imgObj.gender" @keydown.enter="getImg()">
     <button @click="getImg()">发送请求</button><br>
-    <img :class={getImgs:imgObj.img}  :src="imgObj.src.imgurl" v-if="!imgObj.loading">
+    <img   :src="imgObj.src.imgurl" v-if="!imgObj.loading">
     <Loading v-if="imgObj.loading" />
     <br>
     <button @click="dis = !dis">显示/隐藏瀑布流</button><br>
@@ -89,10 +89,7 @@ watch(
 </template>
 
 <style  scoped lang="less">
-.getImgs {
-	width: 600px;
-	height: 375px;
-}
+
 
 input {
 	border: 2px solid v-bind(color);
