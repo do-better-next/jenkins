@@ -16,11 +16,14 @@ provide('color', colorv)
 
 <template>
   <header class="header">
-
     <RouterLink to="/welcome" class="home" tag="button">Home</RouterLink>
     <RouterLink to="/about" class="about" tag="button">about</RouterLink>
   </header>
-  <RouterView />
+  <Transition 
+    leave-active-class="animate__animated animate__fadeOutUp"
+    enter-active-class="animate__animated animate__fadeInUp">
+    <RouterView />
+  </Transition>
 </template>
 
 <style >
@@ -38,9 +41,7 @@ provide('color', colorv)
   height: 30px;
 }
 
-.home {
-
-}
+.home {}
 
 .about {
   border-left: 0px solid transparent;
