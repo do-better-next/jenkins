@@ -65,6 +65,7 @@ watch(
     <input type="text" v-model="imgObj.gender" @keydown.enter="getImg()">
     <button @click="getImg()">发送请求</button><br>
     <img :src="imgObj.src.imgurl" v-if="!imgObj.loading">
+    <img src="../assets/images/gjb.jpg" v-if="!imgObj.loading">
     <Loading v-if="imgObj.loading" />
     <br>
 
