@@ -2,17 +2,17 @@
 import { useCounterStore } from '../stores/counter';
 import useMousePosition from '../hooks/useMousePosition';
 import { useAxios } from '../hooks/useAxios';
-import { ref, computed, reactive, watch, inject } from 'vue'
+import { ref, onMounted, reactive, watch, inject, } from 'vue'
 import WaterFall from './WaterFall.vue';
 import Loading from './Loading.vue'
-import gsap from 'gsap'
+import gsap from 'gsap';
 const color = inject('color')
 const count = useCounterStore()
 const { x, y } = useMousePosition()
 const imgObj = reactive({
     src: "",
     img: false,
-    gender: "",
+    gender: "女",
     loading: false
 
 })
@@ -23,7 +23,11 @@ const num = reactive({
     current: 0,
     tweendNumber: 0
 })
-const list = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+const list = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+
+onMounted(()=>{
+    getImg()
+})
 
 function getImg() {
 if(imgObj.gender=='男'||imgObj.gender=='女'){
@@ -32,7 +36,6 @@ if(imgObj.gender=='男'||imgObj.gender=='女'){
     imgObj.src = date
     imgObj.loading = load
     imgObj.img = true
-    color.value = 'red'
 }else{
     alert('请输入性别:男/女')
 }
@@ -57,7 +60,8 @@ watch(
     </button><br>
     <input type="number" v-model="num.current" step="20">
     <div>{{ num.tweendNumber.toFixed(0) }}</div>
-    <div>鼠标x坐标:{{ $filter.format(x) }}</div>
+    <!-- <div>鼠标x坐标:{{ $filter.format(x) }}</div> -->
+    <div>鼠标x坐标:{{ x }}</div>
     <div>鼠标y坐标:{{ y }}</div>
     <h1>{{ count.count }}</h1>
     <button @click="count.increment()">+1</button><br>
@@ -65,7 +69,6 @@ watch(
     <input type="text" v-model="imgObj.gender" @keydown.enter="getImg()">
     <button @click="getImg()">发送请求</button><br>
     <img :src="imgObj.src.imgurl" v-if="!imgObj.loading">
-    <img src="../assets/images/gjb.jpg" style="width:500px;height:400px">
     <Loading v-if="imgObj.loading" />
     <br>
 
@@ -79,6 +82,10 @@ watch(
 
 <style  scoped lang="less">
 input {
-    border: 2px solid v-bind(color);
+	border: 2px solid v-bind(color);
 }
+
+
+
+
 </style>

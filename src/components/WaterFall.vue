@@ -68,7 +68,6 @@ const init = () => {
             currentTop[0]=item
         }
     })
-    console.log(currentTop)
 }
 onMounted(() => {
 
@@ -98,6 +97,9 @@ onMounted(() => {
 		border-radius: 10px;
 	}
 }
+
+
+
 
 
 

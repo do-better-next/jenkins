@@ -1,2 +1,5 @@
 @import url(./normalize.css);
 @import url(./reset.css);
+#app {
+	position: relative;
+}
