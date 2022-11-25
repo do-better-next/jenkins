@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import {ref,watch ,provide} from 'vue';
+import { ref, watch, provide } from 'vue';
 import Foot from './views/Footer.vue';
 import { useRoute } from 'vue-router';
 const route = useRoute()
@@ -12,7 +12,7 @@ const randomColor = () => {
 	return '#' + random
 }
 const colorv = ref(randomColor())
-provide('color',colorv)
+provide('color', colorv)
 </script>
 
 <template>
@@ -21,9 +21,15 @@ provide('color',colorv)
 		<RouterLink to="/welcome" :class="[route.fullPath == '/welcome' ? 'active' : '', 'home']">Home</RouterLink>
 		<RouterLink to="/about" :class="[route.fullPath == '/about' ? 'active' : '', 'about']">About</RouterLink>
 	</header>
+
+
 	<div class="main">
-		<RouterView />
+		<Transition leave-active-class="animate__animated animate__fadeOutUp"
+			enter-active-class="animate__animated animate__fadeInUp">
+			<RouterView />
+		</Transition>
 	</div>
+
 	<Foot class="footer" />
 </template>
 
@@ -33,24 +39,18 @@ provide('color',colorv)
 }
 
 .header {
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 0;
-	z-index: 999;
-	height: 30px;
+	height: 50px;
 	background-color: #fff;
 }
 
 .main {
-margin-top: 30px;
+	flex: 1;
 }
 
 .footer {
-
+	width: 100%;
 	height: 250px;
 	background-color: v-bind(colorv);
-	width: 100%;
 }
 
 
@@ -60,35 +60,13 @@ margin-top: 30px;
 	border: 2px solid rgb(11, 10, 10);
 	width: 50%;
 	height: inherit;
-	line-height: 25px;
+	line-height: 50px;
 	text-align: center;
-	color: bisque;
+	color: #222;
 }
 
 .about {
 	border-left: 0 solid transparent;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </style>

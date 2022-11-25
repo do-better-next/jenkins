@@ -1,5 +1,11 @@
 @import url(./normalize.css);
 @import url(./reset.css);
+html,
+body {
+	height: 100%;
+}
 #app {
-	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
