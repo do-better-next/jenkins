@@ -10,7 +10,7 @@
 
 .inner {
 	box-sizing: border-box;
-	line-height: 350px;
+	line-height: 250px;
 	text-align: center;
 }
 .inner a {

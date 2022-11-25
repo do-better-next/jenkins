@@ -43,19 +43,14 @@ provide('color',colorv)
 }
 
 .main {
-	margin-top: 40px;
-	min-width: 1180px;
-	min-height: 2085px;
+margin-top: 30px;
 }
 
 .footer {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: -300px;
-	z-index: 999;
-	height: 350px;
+
+	height: 250px;
 	background-color: v-bind(colorv);
+	width: 100%;
 }
 
 
