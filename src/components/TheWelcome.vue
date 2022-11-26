@@ -13,7 +13,7 @@ const color = inject('color')
       2. nginx -s stop 停止nginx<br>
       3. 查看80端口被那个进程占用 lsof -i:80<br>
       4. 查看系统内核信息，cat /proc/version</p>
-   <img src="../assets/images/linuxContent.png" alt="">   
+   <img src="../assets/images/linuxContent.png" style="width:600px;height: 450px;" alt="">   
 </template>
 
 <style  scoped>
@@ -23,6 +23,8 @@ input {
 p {
 	color: v-bind(color);
 }
+
+
 
 
 
