@@ -65,7 +65,7 @@ watch(
     <div>鼠标y坐标:{{ y }}</div>
     <h1>{{ count.count }}</h1>
     <button @click="count.increment()">+1</button><br>
-    <label for="">选择图片性别:</label>
+    <label for="">图片性别:</label>
     <input type="text" v-model="imgObj.gender" @keydown.enter="getImg()">
     <button @click="getImg()">发送请求</button><br>
     <img :src="imgObj.src.imgurl" v-if="!imgObj.loading">
@@ -84,6 +84,7 @@ watch(
 input {
 	border: 2px solid v-bind(color);
 }
+
 
 
 
