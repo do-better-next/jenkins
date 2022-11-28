@@ -68,7 +68,7 @@ watch(
     <label for="">图片性别:</label>
     <input type="text" v-model="imgObj.gender" @keydown.enter="getImg()">
     <button @click="getImg()">发送请求</button><br>
-    <img :src="imgObj.src.imgurl" v-if="!imgObj.loading">
+    <img style="width: 500px; height:500px;" :src="imgObj.src.imgurl" v-if="!imgObj.loading">
     <Loading v-if="imgObj.loading" />
     <br>
 
